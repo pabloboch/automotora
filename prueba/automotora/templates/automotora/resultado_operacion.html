@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado - Automotora</title>
+    <link rel="stylesheet" href="{% static 'automotora/css/styles.css' %}">
+</head>
+<body>
+    <main class="container-wrapper">
+        <section class="card-panel card-form">
+            <h1 class="page-title">Registro de cliente</h1>
+            <p class="status-message status-{{ tipo_mensaje }}" role="status" aria-live="polite">
+                {{ mensaje }}
+            </p>
+            <footer class="actions-footer">
+                <a class="btn-back" href="{% url 'agregar_cliente_vehiculo' %}">Volver al formulario</a>
+                <a class="btn-back" href="{% url 'home_page' %}">Inicio</a>
+            </footer>
+        </section>
+    </main>
+</body>
+</html>

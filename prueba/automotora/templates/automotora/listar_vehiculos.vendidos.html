@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar vehículos vendidos</title>
+    <link rel="stylesheet" href="{% static 'automotora/css/styles.css' %}">
+</head>
+<body>
+    <main class="container-wrapper">
+        <section class="card-panel card-wide">
+            <h1 class="page-title">Vehículos vendidos</h1>
+            <section class="table-section">
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID Venta</th>
+                                <th>Vehículo</th>
+                                <th>Fecha de venta</th>
+                                <th>Precio de venta</th>
+                                <th>Comprador</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for vendido in vendidos %}
+                            <tr>
+                                <td>{{ vendido.id_venta }}</td>
+                                <td>{{ vendido.vehiculo_id }}</td>
+                                <td>{{ vendido.fecha_venta }}</td>
+                                <td>{{ vendido.precio_venta }}</td>
+                                <td>{{ vendido.comprador }}</td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td class="empty-cell" colspan="5">No hay vehículos vendidos registrados.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <footer class="actions-footer">
+                <a class="btn-back" href="{% url 'home_page' %}">Volver</a>
+            </footer>
+        </section>
+    </main>
+</body>
+</html>

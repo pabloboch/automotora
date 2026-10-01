@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busqueda cliente</title>
+    <link rel="stylesheet" href="{% static 'automotora/css/styles.css' %}">
+</head>
+<body>
+    <main class="container-wrapper">
+        <section class="card-panel card-form">
+            <h1 class="page-title">Búsqueda de cliente por RUT</h1>
+            <form class="search-form" action="../buscar/">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="txt_rut">Ingrese RUT de cliente</label>
+                    <input id="txt_rut" type="text" name="txt_rut">
+                </div>
+                <input class="btn-primary" type="submit" value="Buscar">
+            </form>
+
+            {% if busqueda_realizada %}
+                {% if clientes %}
+                    {% for cliente in clientes %}
+                        <div class="result-panel">
+                            <h2>Datos del cliente</h2>
+                            <dl class="detail-list">
+                                <div><dt>ID Cliente</dt><dd>{{ cliente.id_cliente }}</dd></div>
+                                <div><dt>RUT cliente</dt><dd>{{ cliente.rut }}</dd></div>
+                                <div><dt>Nombre</dt><dd>{{ cliente.nombre }}</dd></div>
+                                <div><dt>Apellidos</dt><dd>{{ cliente.apellidos }}</dd></div>
+                            </dl>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="empty-state">No existe cliente con ese código.</p>
+                {% endif %}
+            {% endif %}
+
+            <footer class="actions-footer">
+                <a class="btn-back" href="{% url 'home_page' %}">Volver</a>
+            </footer>
+        </section>
+    </main>
+</body>
+</html>

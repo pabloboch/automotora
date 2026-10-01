@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar vehículo vendido</title>
+    <link rel="stylesheet" href="{% static 'automotora/css/styles.css' %}">
+</head>
+<body>
+    <main class="container-wrapper">
+        <section class="card-panel card-form">
+            <h1 class="page-title">Agregar vehículo vendido</h1>
+
+            <form class="form-section" action="../ingresarVehiculoVendido">
+                <h2>Datos de la venta</h2>
+                <div class="form-group">
+                    <label for="txt_id_vehiculo">ID Vehículo</label>
+                    <input id="txt_id_vehiculo" type="text" name="txt_id_vehiculo" required>
+                </div>
+                <div class="form-group">
+                    <label for="txt_fecha_venta">Fecha de venta</label>
+                    <input id="txt_fecha_venta" type="text" name="txt_fecha_venta" required placeholder="YYYY-MM-DD">
+                </div>
+                <div class="form-group">
+                    <label for="txt_precio_venta">Precio de venta</label>
+                    <input id="txt_precio_venta" type="text" name="txt_precio_venta" required>
+                </div>
+                <div class="form-group">
+                    <label for="txt_comprador">Comprador</label>
+                    <input id="txt_comprador" type="text" name="txt_comprador" required>
+                </div>
+                <input class="btn-primary" type="submit" value="Guardar Venta">
+            </form>
+
+            <footer class="actions-footer">
+                <a class="btn-back" href="{% url 'home_page' %}">Volver</a>
+            </footer>
+        </section>
+    </main>
+
+</body>
+</html>

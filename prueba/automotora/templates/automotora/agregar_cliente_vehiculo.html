@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar clientes y sus vehículos</title>
+    <link rel="stylesheet" href="{% static 'automotora/css/styles.css' %}">
+</head>
+<body>
+    <main class="container-wrapper">
+        <section class="card-panel card-wide">
+            <h1 class="page-title">Agregar clientes y sus vehículos</h1>
+
+            <div class="forms-grid">
+                <form class="form-section" action="../ingresarCliente">
+                    <h2>Datos del cliente</h2>
+                    <div class="form-group">
+                        <label for="txt_rut_cliente">RUT Cliente</label>
+                        <input id="txt_rut_cliente" type="text" name="txt_rut_cliente" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt_nombre_cliente">Nombre Cliente</label>
+                        <input id="txt_nombre_cliente" type="text" name="txt_nombre_cliente" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt_apellidos_cliente">Apellidos Cliente</label>
+                        <input id="txt_apellidos_cliente" type="text" name="txt_apellidos_cliente" required>
+                    </div>
+                    <input class="btn-primary" type="submit" value="Guardar Cliente">
+                </form>
+
+                <form class="form-section" action="../ingresarVehiculo">
+                    <h2>Datos del vehículo</h2>
+                    <div class="form-group">
+                        <label for="txt_marca_vehiculo">Marca Vehículo</label>
+                        <input id="txt_marca_vehiculo" type="text" name="txt_marca_vehiculo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt_modelo_vehiculo">Modelo Vehículo</label>
+                        <input id="txt_modelo_vehiculo" type="text" name="txt_modelo_vehiculo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt_anio_vehiculo">Año Vehículo</label>
+                        <input id="txt_anio_vehiculo" type="text" name="txt_anio_vehiculo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt_id_cliente">ID Cliente</label>
+                        <input id="txt_id_cliente" type="text" name="txt_id_cliente" required>
+                    </div>
+                    <input class="btn-primary" type="submit" value="Guardar Vehículo">
+                </form>
+            </div>
+
+            <footer class="actions-footer">
+                <a class="btn-back" href="{% url 'home_page' %}">Volver</a>
+            </footer>
+        </section>
+    </main>
+
+</body>
+</html>

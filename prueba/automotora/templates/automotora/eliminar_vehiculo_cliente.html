@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar vehiculo cliente</title>
+    <link rel="stylesheet" href="{% static 'automotora/css/styles.css' %}">
+</head>
+<body>
+    <main class="container-wrapper">
+        <section class="card-panel card-wide">
+            <h1 class="page-title">Eliminar vehículo de un cliente</h1>
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID Vehículo</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Año</th>
+                            <th>Cliente</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for vehiculo in vehiculos %}
+                        <tr>
+                            <td>{{ vehiculo.id_vehiculo }}</td>
+                            <td>{{ vehiculo.marca }}</td>
+                            <td>{{ vehiculo.modelo }}</td>
+                            <td>{{ vehiculo.anio }}</td>
+                            <td>{{ vehiculo.cliente_id }}</td>
+                            <td>
+                                <form class="table-action" method="post" action="{% url 'eliminar_vehiculo' %}"
+                                    onsubmit="return confirm('¿Eliminar el vehículo {{ vehiculo.marca }} {{ vehiculo.modelo }}?');">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="txt_id_vehiculo" value="{{ vehiculo.id_vehiculo }}">
+                                    <input class="btn-danger" type="submit" value="Eliminar">
+                                </form>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr><td class="empty-cell" colspan="6">No hay vehículos.</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <footer class="actions-footer">
+                <a class="btn-back" href="{% url 'home_page' %}">Volver</a>
+            </footer>
+        </section>
+    </main>
+
+</body>
+</html>
